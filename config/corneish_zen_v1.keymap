@@ -74,9 +74,9 @@
 //             | ESC | SPC | TAB |        | ENT | BSP | DEL |
 //             |+CFG |+NAV |+MED |        |+SYM |+NUM |+FUN |
             bindings = <
-&none &kp Q      &kp W      &kp E          &kp R          &kp T                &kp Y            &kp U           &kp I       &kp O      &kp P         &none
-&none &hm LGUI A &hm LALT S &hm LCTRL D    &hm LSHIFT F   &kp G                &kp H            &hm LSHIFT J    &hm LCTRL K &hm LALT L &hm LGUI APOS &none
-&none &kp Z      &kp X      &kp C          &kp V          &kp B                &kp N            &kp M           &kp COMMA   &kp PERIOD &kp SLASH     &none
+&kp Q      &kp W      &kp E          &kp R          &kp T                &kp Y            &kp U           &kp I       &kp O      &kp P
+&hm LGUI A &hm LALT S &hm LCTRL D    &hm LSHIFT F   &kp G                &kp H            &hm LSHIFT J    &hm LCTRL K &hm LALT L &hm LGUI APOS
+&kp Z      &kp X      &kp C          &kp V          &kp B                &kp N            &kp M           &kp COMMA   &kp PERIOD &kp SLASH
                             &lt CONFIG ESC &lt NAVI SPACE &lt MEDIA TAB        &lt SYMBOL ENTER &lt NUMPAD BSPC &lt FUNC DEL
             >;
         };
@@ -90,9 +90,9 @@
 //             | ESC | TAB | SPC |        | BSP | ENT | DEL |
 //             |+CFG |+MED |+NAV |        |+SYM |+NUM |+FUN |
             bindings = <
-&none &kp Q      &kp W      &kp F          &kp P         &kp B                 &kp J           &kp L            &kp U       &kp Y      &kp APOS   &none
-&none &hm LGUI A &hm LALT R &hm LCTRL S    &hm LSHIFT T  &kp G                 &kp M           &hm LSHIFT N     &hm LCTRL E &hm LALT I &hm LGUI O &none
-&none &kp Z      &kp X      &kp C          &kp D         &kp V                 &kp K           &kp H            &kp COMMA   &kp PERIOD &kp SLASH  &none
+&kp Q      &kp W      &kp F          &kp P         &kp B                 &kp J           &kp L            &kp U       &kp Y      &kp APOS
+&hm LGUI A &hm LALT R &hm LCTRL S    &hm LSHIFT T  &kp G                 &kp M           &hm LSHIFT N     &hm LCTRL E &hm LALT I &hm LGUI O
+&kp Z      &kp X      &kp C          &kp D         &kp V                 &kp K           &kp H            &kp COMMA   &kp PERIOD &kp SLASH
                             &lt CONFIG ESC &lt MEDIA TAB &lt NAVI SPACE        &lt NUMPAD BSPC &lt SYMBOL ENTER &lt FUNC DEL
             >;
         };
@@ -105,9 +105,9 @@
 // |  |  |  !  |  @  |  #  |  _  |        |     |     |     |     |     |
 //             |  ~  |  (  |  )  |        |     |     |     |
             bindings = <
-&none &kp LBRC  &kp AMPS   &kp STAR    &kp LPAR  &kp RBRC         &none &none      &none     &none    &none    &none
-&none &kp COLON &kp DOLLAR &kp PERCENT &kp CARET &kp PLUS         &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI &none
-&none &kp PIPE  &kp EXCL   &kp AT_SIGN &kp POUND &kp UNDER        &none &none      &none     &none    &none    &none
+&kp LBRC  &kp AMPS   &kp STAR    &kp LPAR  &kp RBRC         &none &none      &none     &none    &none
+&kp COLON &kp DOLLAR &kp PERCENT &kp CARET &kp PLUS         &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI
+&kp PIPE  &kp EXCL   &kp AT_SIGN &kp POUND &kp UNDER        &none &none      &none     &none    &none
                            &kp TILDE   &kp LPAR  &kp RPAR         &none &none      &none
             >;
         };
@@ -120,9 +120,9 @@
 // |  \  |  1  |  2  |  3  |  -  |        |     |     |     |     |     |
 //             |  `  |  .  |  0  |        |     |     |     |
             bindings = <
-&none &kp LBKT &kp N7 &kp N8    &kp N9     &kp RBKT         &none &none      &none     &none    &none    &none
-&none &kp SEMI &kp N4 &kp N5    &kp N6     &kp EQUAL        &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI &none
-&none &kp BSLH &kp N1 &kp N2    &kp N3     &kp MINUS        &none &none      &none     &none    &none    &none
+&kp LBKT &kp N7 &kp N8    &kp N9     &kp RBKT         &none &none      &none     &none    &none
+&kp SEMI &kp N4 &kp N5    &kp N6     &kp EQUAL        &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI
+&kp BSLH &kp N1 &kp N2    &kp N3     &kp MINUS        &none &none      &none     &none    &none
                       &kp GRAVE &kp PERIOD &kp N0           &none &none      &none
             >;
         };
@@ -135,9 +135,9 @@
 // | F10 | F1  | F2  | F3  | F13 |        |     |     |     |     |     |
 //             | ESC | SPC | TAB |        |     |     |     |
             bindings = <
-&none &kp F12 &kp F7 &kp F8  &kp F9    &kp F15        &none &none      &none     &none    &none    &none
-&none &kp F11 &kp F4 &kp F5  &kp F6    &kp F14        &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI &none
-&none &kp F10 &kp F1 &kp F2  &kp F3    &kp F13        &none &none      &none     &none    &none    &none
+&kp F12 &kp F7 &kp F8  &kp F9    &kp F15        &none &none      &none     &none    &none
+&kp F11 &kp F4 &kp F5  &kp F6    &kp F14        &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI
+&kp F10 &kp F1 &kp F2  &kp F3    &kp F13        &none &none      &none     &none    &none
                      &kp ESC &kp SPACE &kp TAB        &none &none      &none
             >;
         };
@@ -150,9 +150,9 @@
 // |     |     |     |     |     |        |PGDN |PASTE|COPY | CUT | END |
 //             |     |     |     |        | ENT | BSP | DEL |
             bindings = <
-&none &none    &none    &none     &none      &none        &kp K_UNDO &kp K_UNDO  &kp UP     &kp K_REDO &kp K_REDO &none
-&none &kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &none        &kp PG_UP  &kp LEFT    &kp DOWN   &kp RIGHT  &kp HOME   &none
-&none &none    &none    &none     &none      &none        &kp PG_DN  &kp K_PASTE &kp K_COPY &kp K_CUT  &kp END    &none
+&none    &none    &none     &none      &none        &kp K_UNDO &kp K_UNDO  &kp UP     &kp K_REDO &kp K_REDO
+&kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &none        &kp PG_UP  &kp LEFT    &kp DOWN   &kp RIGHT  &kp HOME
+&none    &none    &none     &none      &none        &kp PG_DN  &kp K_PASTE &kp K_COPY &kp K_CUT  &kp END
                         &none     &none      &none        &kp ENTER  &kp BSPC    &kp DEL
             >;
         };
@@ -165,9 +165,9 @@
 // |     |     |     |     |     |        |     |     |     |     |     |
 //             |     |     |     |        |STOP |PLAY |MUTE |
             bindings = <
-&none &none    &none    &none     &none      &none        &none      &none      &kp C_BRI_DN &kp C_BRI_UP &none      &none
-&none &kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &none        &none      &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &none
-&none &none    &none    &none     &none      &none        &none      &none      &none        &none        &none      &none
+&none    &none    &none     &none      &none        &none      &none      &kp C_BRI_DN &kp C_BRI_UP &none
+&kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &none        &none      &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT
+&none    &none    &none     &none      &none        &none      &none      &none        &none        &none
                         &none     &none      &none        &kp C_STOP &kp C_PP   &kp K_MUTE
             >;
         };
@@ -180,9 +180,9 @@
 // |     |     |     |     |     |        |     |     |     |     |     |
 //             |GAME |COLEM|QWERT|        |     |     |     |
             bindings = <
-&none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4        &none &none &none &none &none &none
-&none &bt BT_CLR   &none        &none        &none        &none               &none &none &none &none &none &none
-&none &none        &none        &none        &none        &none               &none &none &none &none &none &none
+&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4        &none &none &none &none &none
+&bt BT_CLR   &none        &none        &none        &none               &none &none &none &none &none
+&none        &none        &none        &none        &none               &none &none &none &none &none
                                 &to GAME     &to COLEDH   &to QWERTY          &none &none &none
             >;
         };
@@ -195,9 +195,9 @@
 // | SHF |  Z  |  X  |  C  |  V  |        |     |     |     |     |     |
 //             |  2  | SPC |  1  |        |     |     |QWERT|
             bindings = <
-&none &kp TAB    &kp Q &kp W  &kp E     &kp R         &none &none &none      &none &none &none
-&none &kp LCTRL  &kp A &kp S  &kp D     &kp F         &none &none &none      &none &none &none
-&none &kp LSHIFT &kp Z &kp X  &kp C     &kp V         &none &none &none      &none &none &none
+&kp TAB    &kp Q &kp W  &kp E     &kp R         &none &none &none      &none &none
+&kp LCTRL  &kp A &kp S  &kp D     &kp F         &none &none &none      &none &none
+&kp LSHIFT &kp Z &kp X  &kp C     &kp V         &none &none &none      &none &none
                        &kp N2 &kp SPACE &kp N1        &none &none &to QWERTY
             >;
         };
