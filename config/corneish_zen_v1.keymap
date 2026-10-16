@@ -1,0 +1,205 @@
+/*
+*
+* apturner version
+*   edited 10/12/2021
+*   edited 09/08/2022 (add GAME layer)
+*   edited 10/16/2026 (align with Ergodox)
+* Modified version of miryoku (github.com/manna-harbour/miryoku)
+* Modified layers:
+*   QWERTY
+*       swapped MEDIA and MOUSE/CONFIG
+*       # NO LONGER swapped SPACE/BACKSP and their layers to inner thumb
+*   NAVI
+*       Rearranged to more closely match personal Ergodox layout
+*   FUNC
+*       removed system keys for more F keys
+*   NUMPAD
+*       moved keys around for suitability with swapped thumbs and LaTeX
+*   SYMBOL
+*       moved keys to match changes to NUMPAD layer
+*   MEDIA
+*       added brightness
+* Removed layers:
+*   MOUSE
+*       replaced by CONFIG
+* Added layers:
+*   COLEDH
+*   GAME
+*
+*/
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define QWERTY 0
+#define COLEDH 1
+#define SYMBOL 2
+#define NUMPAD 3
+#define FUNC   4
+#define NAVI   5
+#define MEDIA  6
+#define CONFIG 7
+#define GAME   8
+
+/ {
+    chosen {
+        // zmk,physical-layout = &foostan_corne_6col_layout;
+        zmk,physical-layout = &foostan_corne_5col_layout;
+    };
+};
+
+/ {
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            label = "QWERTY";
+// ----------------------------------------------------------------------
+// |  Q  |  W  |  E  |  R  |  T  |        |  Y  |  U  |  I  |  O  |  P  |
+// |A+GUI|S+ALT|D+CTL|F+SHF|  G  |        |  H  |J+SHF|K+CTL|L+ALT|'+GUI|
+// |  Z  |  X  |  C  |  V  |  B  |        |  N  |  M  |  ,  |  .  |  /  |
+//             | ESC | SPC | TAB |        | ENT | BSP | DEL |
+//             |+CFG |+NAV |+MED |        |+SYM |+NUM |+FUN |
+            bindings = <
+&none &kp Q      &kp W      &kp E          &kp R          &kp T                &kp Y            &kp U           &kp I       &kp O      &kp P         &none
+&none &hm LGUI A &hm LALT S &hm LCTRL D    &hm LSHIFT F   &kp G                &kp H            &hm LSHIFT J    &hm LCTRL K &hm LALT L &hm LGUI APOS &none
+&none &kp Z      &kp X      &kp C          &kp V          &kp B                &kp N            &kp M           &kp COMMA   &kp PERIOD &kp SLASH     &none
+                            &lt CONFIG ESC &lt NAVI SPACE &lt MEDIA TAB        &lt SYMBOL ENTER &lt NUMPAD BSPC &lt FUNC DEL
+            >;
+        };
+
+        colemak_layer {
+            label = "COLEDH";
+// ----------------------------------------------------------------------
+// |  Q  |  W  |  F  |  P  |  B  |        |  J  |  L  |  U  |  Y  |  '  |
+// |A+GUI|R+ALT|S+CTL|T+SHF|  G  |        |  M  |N+SHF|E+CTL|I+ALT|O+GUI|
+// |  Z  |  X  |  C  |  D  |  V  |        |  K  |  H  |  ,  |  .  |  /  |
+//             | ESC | TAB | SPC |        | BSP | ENT | DEL |
+//             |+CFG |+MED |+NAV |        |+SYM |+NUM |+FUN |
+            bindings = <
+&none &kp Q      &kp W      &kp F          &kp P         &kp B                 &kp J           &kp L            &kp U       &kp Y      &kp APOS   &none
+&none &hm LGUI A &hm LALT R &hm LCTRL S    &hm LSHIFT T  &kp G                 &kp M           &hm LSHIFT N     &hm LCTRL E &hm LALT I &hm LGUI O &none
+&none &kp Z      &kp X      &kp C          &kp D         &kp V                 &kp K           &kp H            &kp COMMA   &kp PERIOD &kp SLASH  &none
+                            &lt CONFIG ESC &lt MEDIA TAB &lt NAVI SPACE        &lt NUMPAD BSPC &lt SYMBOL ENTER &lt FUNC DEL
+            >;
+        };
+
+        symbol_layer {
+            label = "SYMBOL";
+// ----------------------------------------------------------------------
+// |  {  |  &  |  *  |  (  |  }  |        |     |     |     |     |     |
+// |  :  |  $  |  %  |  ^  |  +  |        |     | SHF | CTL | ALT | GUI |
+// |  |  |  !  |  @  |  #  |  _  |        |     |     |     |     |     |
+//             |  ~  |  (  |  )  |        |     |     |     |
+            bindings = <
+&none &kp LBRC  &kp AMPS   &kp STAR    &kp LPAR  &kp RBRC         &none &none      &none     &none    &none    &none
+&none &kp COLON &kp DOLLAR &kp PERCENT &kp CARET &kp PLUS         &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI &none
+&none &kp PIPE  &kp EXCL   &kp AT_SIGN &kp POUND &kp UNDER        &none &none      &none     &none    &none    &none
+                           &kp TILDE   &kp LPAR  &kp RPAR         &none &none      &none
+            >;
+        };
+
+        numpad_layer {
+            label = "NUMPAD";
+// ----------------------------------------------------------------------
+// |  [  |  7  |  8  |  9  |  ]  |        |     |     |     |     |     |
+// |  ;  |  4  |  5  |  6  |  =  |        |     | SHF | CTL | ALT | GUI |
+// |  \  |  1  |  2  |  3  |  -  |        |     |     |     |     |     |
+//             |  `  |  .  |  0  |        |     |     |     |
+            bindings = <
+&none &kp LBKT &kp N7 &kp N8    &kp N9     &kp RBKT         &none &none      &none     &none    &none    &none
+&none &kp SEMI &kp N4 &kp N5    &kp N6     &kp EQUAL        &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI &none
+&none &kp BSLH &kp N1 &kp N2    &kp N3     &kp MINUS        &none &none      &none     &none    &none    &none
+                      &kp GRAVE &kp PERIOD &kp N0           &none &none      &none
+            >;
+        };
+
+        function_layer {
+            label = "FUNC";
+// ----------------------------------------------------------------------
+// | F12 | F7  | F8  | F9  | F15 |        |     |     |     |     |     |
+// | F11 | F4  | F5  | F6  | F14 |        |     | SHF | CTL | ALT | GUI |
+// | F10 | F1  | F2  | F3  | F13 |        |     |     |     |     |     |
+//             | ESC | SPC | TAB |        |     |     |     |
+            bindings = <
+&none &kp F12 &kp F7 &kp F8  &kp F9    &kp F15        &none &none      &none     &none    &none    &none
+&none &kp F11 &kp F4 &kp F5  &kp F6    &kp F14        &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI &none
+&none &kp F10 &kp F1 &kp F2  &kp F3    &kp F13        &none &none      &none     &none    &none    &none
+                     &kp ESC &kp SPACE &kp TAB        &none &none      &none
+            >;
+        };
+
+        navigation_layer {
+            label = "NAVI";
+// ----------------------------------------------------------------------
+// |     |     |     |     |     |        |UNDO |UNDO |UARR |REDO |REDO |
+// | GUI | ALT | CTL | SHF |     |        |PGUP |LARR |DARR |RARR |HOME |
+// |     |     |     |     |     |        |PGDN |PASTE|COPY | CUT | END |
+//             |     |     |     |        | ENT | BSP | DEL |
+            bindings = <
+&none &none    &none    &none     &none      &none        &kp K_UNDO &kp K_UNDO  &kp UP     &kp K_REDO &kp K_REDO &none
+&none &kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &none        &kp PG_UP  &kp LEFT    &kp DOWN   &kp RIGHT  &kp HOME   &none
+&none &none    &none    &none     &none      &none        &kp PG_DN  &kp K_PASTE &kp K_COPY &kp K_CUT  &kp END    &none
+                        &none     &none      &none        &kp ENTER  &kp BSPC    &kp DEL
+            >;
+        };
+
+        media_layer {
+            label = "MEDIA";
+// ----------------------------------------------------------------------
+// |     |     |     |     |     |        |     |     |BRID |BRIU |     |
+// | GUI | ALT | CTL | SHF |     |        |     |PREV |VOLD |VOLU |NEXT |
+// |     |     |     |     |     |        |     |     |     |     |     |
+//             |     |     |     |        |STOP |PLAY |MUTE |
+            bindings = <
+&none &none    &none    &none     &none      &none        &none      &none      &kp C_BRI_DN &kp C_BRI_UP &none      &none
+&none &kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &none        &none      &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &none
+&none &none    &none    &none     &none      &none        &none      &none      &none        &none        &none      &none
+                        &none     &none      &none        &kp C_STOP &kp C_PP   &kp K_MUTE
+            >;
+        };
+
+        configuration_layer {
+            label = "CONFIG";
+// ----------------------------------------------------------------------
+// | BT1 | BT2 | BT3 | BT4 | BT5 |        |     |     |     |     |     |
+// |BTCLR|     |     |     |     |        |     |     |     |     |     |
+// |     |     |     |     |     |        |     |     |     |     |     |
+//             |GAME |COLEM|QWERT|        |     |     |     |
+            bindings = <
+&none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4        &none &none &none &none &none &none
+&none &bt BT_CLR   &none        &none        &none        &none               &none &none &none &none &none &none
+&none &none        &none        &none        &none        &none               &none &none &none &none &none &none
+                                &to GAME     &to COLEDH   &to QWERTY          &none &none &none
+            >;
+        };
+
+        game_layer {
+            label = "GAME";
+// ----------------------------------------------------------------------
+// | TAB |  Q  |  W  |  E  |  R  |        |     |     |     |     |     |
+// | CTL |  A  |  S  |  D  |  F  |        |     |     |     |     |     |
+// | SHF |  Z  |  X  |  C  |  V  |        |     |     |     |     |     |
+//             |  2  | SPC |  1  |        |     |     |QWERT|
+            bindings = <
+&none &kp TAB    &kp Q &kp W  &kp E     &kp R         &none &none &none      &none &none &none
+&none &kp LCTRL  &kp A &kp S  &kp D     &kp F         &none &none &none      &none &none &none
+&none &kp LSHIFT &kp Z &kp X  &kp C     &kp V         &none &none &none      &none &none &none
+                       &kp N2 &kp SPACE &kp N1        &none &none &to QWERTY
+            >;
+        };
+    };
+};
