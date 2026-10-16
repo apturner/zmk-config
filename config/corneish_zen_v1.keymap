@@ -33,14 +33,13 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define QWERTY 0
-#define COLEDH 1
-#define SYMBOL 2
-#define NUMPAD 3
-#define FUNC   4
-#define NAVI   5
-#define MEDIA  6
-#define CONFIG 7
-#define GAME   8
+#define SYMBOL 1
+#define NUMPAD 2
+#define FUNC   3
+#define NAVI   4
+#define MEDIA  5
+#define CONFIG 6
+#define GAME   7
 
 / {
     chosen {
@@ -77,23 +76,7 @@
 &kp Q      &kp W      &kp E          &kp R          &kp T                &kp Y            &kp U           &kp I       &kp O      &kp P
 &hm LGUI A &hm LALT S &hm LCTRL D    &hm LSHIFT F   &kp G                &kp H            &hm LSHIFT J    &hm LCTRL K &hm LALT L &hm LGUI APOS
 &kp Z      &kp X      &kp C          &kp V          &kp B                &kp N            &kp M           &kp COMMA   &kp PERIOD &kp SLASH
-                            &lt CONFIG ESC &lt NAVI SPACE &lt MEDIA TAB        &lt SYMBOL ENTER &lt NUMPAD BSPC &lt FUNC DEL
-            >;
-        };
-
-        colemak_layer {
-            label = "COLEDH";
-// ----------------------------------------------------------------------
-// |  Q  |  W  |  F  |  P  |  B  |        |  J  |  L  |  U  |  Y  |  '  |
-// |A+GUI|R+ALT|S+CTL|T+SHF|  G  |        |  M  |N+SHF|E+CTL|I+ALT|O+GUI|
-// |  Z  |  X  |  C  |  D  |  V  |        |  K  |  H  |  ,  |  .  |  /  |
-//             | ESC | TAB | SPC |        | BSP | ENT | DEL |
-//             |+CFG |+MED |+NAV |        |+SYM |+NUM |+FUN |
-            bindings = <
-&kp Q      &kp W      &kp F          &kp P         &kp B                 &kp J           &kp L            &kp U       &kp Y      &kp APOS
-&hm LGUI A &hm LALT R &hm LCTRL S    &hm LSHIFT T  &kp G                 &kp M           &hm LSHIFT N     &hm LCTRL E &hm LALT I &hm LGUI O
-&kp Z      &kp X      &kp C          &kp D         &kp V                 &kp K           &kp H            &kp COMMA   &kp PERIOD &kp SLASH
-                            &lt CONFIG ESC &lt MEDIA TAB &lt NAVI SPACE        &lt NUMPAD BSPC &lt SYMBOL ENTER &lt FUNC DEL
+                      &lt CONFIG ESC &lt NAVI SPACE &lt MEDIA TAB        &lt SYMBOL ENTER &lt NUMPAD BSPC &lt FUNC DEL
             >;
         };
 
@@ -108,7 +91,7 @@
 &kp LBRC  &kp AMPS   &kp STAR    &kp LPAR  &kp RBRC         &none &none      &none     &none    &none
 &kp COLON &kp DOLLAR &kp PERCENT &kp CARET &kp PLUS         &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI
 &kp PIPE  &kp EXCL   &kp AT_SIGN &kp POUND &kp UNDER        &none &none      &none     &none    &none
-                           &kp TILDE   &kp LPAR  &kp RPAR         &none &none      &none
+                     &kp TILDE   &kp LPAR  &kp RPAR         &none &none      &none
             >;
         };
 
@@ -123,7 +106,7 @@
 &kp LBKT &kp N7 &kp N8    &kp N9     &kp RBKT         &none &none      &none     &none    &none
 &kp SEMI &kp N4 &kp N5    &kp N6     &kp EQUAL        &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI
 &kp BSLH &kp N1 &kp N2    &kp N3     &kp MINUS        &none &none      &none     &none    &none
-                      &kp GRAVE &kp PERIOD &kp N0           &none &none      &none
+                &kp GRAVE &kp PERIOD &kp N0           &none &none      &none
             >;
         };
 
@@ -138,7 +121,7 @@
 &kp F12 &kp F7 &kp F8  &kp F9    &kp F15        &none &none      &none     &none    &none
 &kp F11 &kp F4 &kp F5  &kp F6    &kp F14        &none &kp LSHIFT &kp LCTRL &kp LALT &kp LGUI
 &kp F10 &kp F1 &kp F2  &kp F3    &kp F13        &none &none      &none     &none    &none
-                     &kp ESC &kp SPACE &kp TAB        &none &none      &none
+               &kp ESC &kp SPACE &kp TAB        &none &none      &none
             >;
         };
 
@@ -153,7 +136,7 @@
 &none    &none    &none     &none      &none        &kp K_UNDO &kp K_UNDO  &kp UP     &kp K_REDO &kp K_REDO
 &kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &none        &kp PG_UP  &kp LEFT    &kp DOWN   &kp RIGHT  &kp HOME
 &none    &none    &none     &none      &none        &kp PG_DN  &kp K_PASTE &kp K_COPY &kp K_CUT  &kp END
-                        &none     &none      &none        &kp ENTER  &kp BSPC    &kp DEL
+                  &none     &none      &none        &kp ENTER  &kp BSPC    &kp DEL
             >;
         };
 
@@ -168,7 +151,7 @@
 &none    &none    &none     &none      &none        &none      &none      &kp C_BRI_DN &kp C_BRI_UP &none
 &kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &none        &none      &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT
 &none    &none    &none     &none      &none        &none      &none      &none        &none        &none
-                        &none     &none      &none        &kp C_STOP &kp C_PP   &kp K_MUTE
+                  &none     &none      &none        &kp C_STOP &kp C_PP   &kp K_MUTE
             >;
         };
 
@@ -183,7 +166,7 @@
 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4        &none &none &none &none &none
 &bt BT_CLR   &none        &none        &none        &none               &none &none &none &none &none
 &none        &none        &none        &none        &none               &none &none &none &none &none
-                                &to GAME     &to COLEDH   &to QWERTY          &none &none &none
+                          &to GAME     &to COLEDH   &to QWERTY          &none &none &none
             >;
         };
 
@@ -198,7 +181,7 @@
 &kp TAB    &kp Q &kp W  &kp E     &kp R         &none &none &none      &none &none
 &kp LCTRL  &kp A &kp S  &kp D     &kp F         &none &none &none      &none &none
 &kp LSHIFT &kp Z &kp X  &kp C     &kp V         &none &none &none      &none &none
-                       &kp N2 &kp SPACE &kp N1        &none &none &to QWERTY
+                 &kp N2 &kp SPACE &kp N1        &none &none &to QWERTY
             >;
         };
     };
